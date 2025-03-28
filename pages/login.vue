@@ -1,4 +1,29 @@
 <script setup lang="ts">
+import {ref, onMounted} from "vue";
+import {useAuthStore} from "../store/authStore";
+
+const authStore = useAuthStore()
+const login = ref('')
+const password = ref('')
+
+
+const sendForm = async () => {
+	await authStore.login(login.value, password.value)
+
+  if (authStore.user) {
+    console.log("Авторизация успешна");
+  }
+  else {
+    console.log("Ошибка авторизации", "Логин: " + login.value, "Пароль: " + password.value);
+  }
+
+}
+
+
+
+watch(login,(newVal) => console.log(newVal))
+watch(password,(newVal) => console.log(newVal))
+
 
 
 </script>
@@ -13,9 +38,12 @@
 				</v-card-title>
 
 				<v-card-text class="pb-0">
-						<v-form>
+						<v-form @submit.prevent="sendForm">
 								<v-text-field
+												v-model="login"
 												label="Логин"
+												type="email"
+												name="email"
 												required
 												autocomplete="username"
 												suggested="username"
@@ -24,6 +52,7 @@
 								></v-text-field>
 
 								<v-text-field
+												v-model="password"
 												label="Пароль"
 												type="password"
 												autocomplete="current-password"

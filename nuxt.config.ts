@@ -18,13 +18,13 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    vue: {
-      // @ts-ignore
-      reactivityTransform: true
-    },
-    define: {
-      'process.env.DEBUG': false
-    },
+    // vue: {
+    //   // @ts-ignore
+    //   reactivityTransform: true
+    // },
+    // define: {
+    //   'process.env.DEBUG': false
+    // },
     css: {
       preprocessorOptions: {
         sass: {
@@ -33,6 +33,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  ssr: false,
 
   compatibilityDate: '2025-03-28'
 })

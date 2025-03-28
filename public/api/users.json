@@ -1,5 +1,16 @@
 [
     {
+        "name": "Ivan",
+        "surname": "Ivanov",
+        "credentials":{
+            "username": "test@mail.com",
+            "passphrase": "123"
+        },
+        "active": true,
+        "created": "03.03.2025 10:00:21",
+        "_comment": "Пользователь David Jones с логином david.jones@creds.com и паролем '8u3&s-1uda'"
+    },
+    {
         "name": "David",
         "surname": "Jones",
         "credentials":{

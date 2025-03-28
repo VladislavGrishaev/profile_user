@@ -1,8 +1,10 @@
 {
+
   "compilerOptions": {
-    "types": [
-      "vuetify",
-      "@mdi/font/types"
-    ]
+    "target": "ES2015",
+    "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "types": ["vuetify", "@mdi/font/types"]
   }
 }

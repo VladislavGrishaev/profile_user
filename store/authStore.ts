@@ -1,9 +1,18 @@
 import {defineStore} from "pinia";
 
 
+interface Credentials {
+ username: string;
+ passphrase: string;
+}
+
 interface User {
   login: string;
   password: string;
+  credentials: Credentials;
+  active: boolean;
+  created: string;
+  _comment: string;
 }
 
 // @ts-ignore
@@ -16,7 +25,6 @@ export const useAuthStore = defineStore('auth', {
   actions: {
 
     /** Загружаем пользователей с сервера **/
-    //@ts-ignore
     async loadUsers(): Promise<void> {
       try {
         const response = await fetch('/api/users')
@@ -28,18 +36,25 @@ export const useAuthStore = defineStore('auth', {
     },
 
     /** Авторизация пользователя **/
-    async login(login: string, password: string) {
+    async login(username: string, password: string): Promise<boolean>  {
       try {
-        // существует ли конкретный пользователь?
-        const user = this.users.find(user => user.login === login && user.password === password)
+        const response = await fetch('/api/users.json')
+        const users: User[] = await response.json()
 
-        if (user) {
+        // существует ли конкретный пользователь?
+        const foundUser = users.find(
+          (u)=>
+            u.credentials.username === username &&
+            u.credentials.passphrase === password
+        )
+
+        if (foundUser) {
           // если да, то авторизуем и сохраним в store
-          this.user = user
+          this.user = foundUser;
           return true
         }
         else {
-          // либо неверные данные и не сохраняем попытку авторизации
+          // если пользователь не найден, то не сохраняем данные
           return false
         }
       }
