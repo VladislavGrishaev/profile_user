@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@/assets/styles/main.scss',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
+
   build: {
     transpile: ['vuetify']
   },
@@ -12,7 +13,15 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
 
+  pinia: {
+    storesDirs: ['./store/**'],
+  },
+
   vite: {
+    vue: {
+      // @ts-ignore
+      reactivityTransform: true
+    },
     define: {
       'process.env.DEBUG': false
     },
@@ -23,5 +32,7 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+
+  compatibilityDate: '2025-03-28'
 })
