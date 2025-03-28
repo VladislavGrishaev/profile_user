@@ -78,5 +78,45 @@
   "date_created": "2024-03-15",
   "price": 58990,
   "category": "Электроника"
+ },
+ {
+  "id": 11,
+  "name": "Фотоаппарат Canon EOS R6",
+  "status": "В наличии",
+  "date_created": "2024-03-18",
+  "price": 149990,
+  "category": "Фототехника"
+ },
+ {
+  "id": 12,
+  "name": "Игровая мышь Razer Viper",
+  "status": "Нет в наличии",
+  "date_created": "2024-02-10",
+  "price": 8990,
+  "category": "Комплектующие"
+ },
+ {
+  "id": 13,
+  "name": "Электросамокат Xiaomi Pro 2",
+  "status": "На складе",
+  "date_created": "2024-01-25",
+  "price": 34990,
+  "category": "Транспорт"
+ },
+ {
+  "id": 14,
+  "name": "Умная колонка Яндекс Станция 2",
+  "status": "В наличии",
+  "date_created": "2024-03-20",
+  "price": 19990,
+  "category": "Умный дом"
+ },
+ {
+  "id": 15,
+  "name": "Внешний жесткий диск Seagate 2TB",
+  "status": "В наличии",
+  "date_created": "2024-03-22",
+  "price": 5990,
+  "category": "Комплектующие"
  }
 ]
