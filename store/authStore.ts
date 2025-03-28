@@ -2,8 +2,8 @@ import {defineStore} from "pinia";
 
 
 interface Credentials {
- username: string;
- passphrase: string;
+  username: string;
+  passphrase: string;
 }
 
 interface User {
@@ -24,41 +24,35 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
 
-    /** Загружаем пользователей с сервера **/
-    async loadUsers(): Promise<void> {
-      try {
-        const response = await fetch('/api/users')
-        this.users = await response.json()
-      }
-      catch (e) {
-        console.error('Ошибка загрузки пользователей: ', e)
-      }
-    },
 
     /** Авторизация пользователя **/
-    async login(username: string, password: string): Promise<boolean>  {
+    async login(username: string, password: string): Promise<boolean> {
       try {
         const response = await fetch('/api/users.json')
         const users: User[] = await response.json()
 
+
         // существует ли конкретный пользователь?
         const foundUser = users.find(
-          (u)=>
+          (u) =>
             u.credentials.username === username &&
             u.credentials.passphrase === password
         )
+        // проверяем, существует ли пользователь
+        foundUser ? this.user = foundUser : this.user = null
 
+        // если пользователь найден, сохраняем его в store и localStorage
         if (foundUser) {
-          // если да, то авторизуем и сохраним в store
-          this.user = foundUser;
+          this.user = foundUser
+          localStorage.setItem('user', JSON.stringify(foundUser))
           return true
         }
         else {
-          // если пользователь не найден, то не сохраняем данные
+          this.user = null
           return false
         }
-      }
-      catch (e) {
+
+      } catch (e) {
         console.error('Ошибка загрузки пользователей: ', e)
         return false
       }

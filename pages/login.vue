@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
+import {useRouter} from "vue-router";
 import {useAuthStore} from "../store/authStore";
 
+const router = useRouter()
 const authStore = useAuthStore()
 const login = ref('')
 const password = ref('')
@@ -10,8 +12,9 @@ const password = ref('')
 const sendForm = async () => {
 	await authStore.login(login.value, password.value)
 
-  if (authStore.user) {
+  if (authStore) {
     console.log("Авторизация успешна");
+    await router.push('/account');
   }
   else {
     console.log("Ошибка авторизации", "Логин: " + login.value, "Пароль: " + password.value);

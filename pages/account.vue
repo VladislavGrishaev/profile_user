@@ -3,7 +3,7 @@
 				<!-- Кнопка выхода -->
 				<v-row class="mb-4">
 						<v-col>
-								<h1>Привет, {{ username }}</h1>
+								<h1>Привет, </h1>
 						</v-col>
 						<v-col class="btn-wrap">
 								<v-btn color="error">
@@ -18,7 +18,7 @@
 								<!-- Фильтр по дате -->
 								<v-col cols="12" md="6">
 										<v-menu>
-												<template v-slot:activator="{ props }">
+												<template #activator="{ props }">
 														<v-text-field
 																		label="Фильтр по дате создания"
 																		readonly
@@ -45,34 +45,7 @@
 
 				<!-- Таблица данных -->
 				<v-data-table
-								:headers="[
-        { title: 'ID', key: 'id' },
-        { title: 'Название', key: 'name' },
-        { title: 'Статус', key: 'status' },
-        { title: 'Дата создания', key: 'date_created' },
-        { title: 'Цена', key: 'price' },
-        { title: 'Категория', key: 'category' }
-      ]"
-								:items="[
-        {
-          id: 1,
-          name: 'Ноутбук',
-          status: 'В наличии',
-          date_created: '2024-03-01',
-          price: 50000,
-          category: 'Электроника'
-        },
-        {
-          id: 2,
-          name: 'Смартфон',
-          status: 'Нет в наличии',
-          date_created: '2024-03-15',
-          price: 30000,
-          category: 'Электроника'
-        }
-      ]"
-								:items-per-page="10"
-								class="elevation-1"
+
 				>
 						<!-- Кастомное отображение статуса -->
 						<template v-slot:item.status="{ item }">
