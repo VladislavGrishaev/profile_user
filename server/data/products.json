@@ -1,0 +1,82 @@
+[
+ {
+  "id": 1,
+  "name": "Ноутбук Lenovo IdeaPad",
+  "status": "В наличии",
+  "date_created": "2024-03-01",
+  "price": 54990,
+  "category": "Электроника"
+ },
+ {
+  "id": 2,
+  "name": "Смартфон Samsung Galaxy S23",
+  "status": "В наличии",
+  "date_created": "2024-03-05",
+  "price": 79990,
+  "category": "Электроника"
+ },
+ {
+  "id": 3,
+  "name": "Наушники Sony WH-1000XM5",
+  "status": "Нет в наличии",
+  "date_created": "2024-02-15",
+  "price": 29990,
+  "category": "Аксессуары"
+ },
+ {
+  "id": 4,
+  "name": "Фитнес-браслет Xiaomi Band 8",
+  "status": "В наличии",
+  "date_created": "2024-03-10",
+  "price": 4990,
+  "category": "Гаджеты"
+ },
+ {
+  "id": 5,
+  "name": "Кофемашина DeLonghi Magnifica",
+  "status": "На складе",
+  "date_created": "2024-01-22",
+  "price": 45990,
+  "category": "Бытовая техника"
+ },
+ {
+  "id": 6,
+  "name": "Игровая консоль PlayStation 5",
+  "status": "В наличии",
+  "date_created": "2024-03-12",
+  "price": 64990,
+  "category": "Игры"
+ },
+ {
+  "id": 7,
+  "name": "Электронная книга PocketBook 740",
+  "status": "Нет в наличии",
+  "date_created": "2024-02-28",
+  "price": 24990,
+  "category": "Электроника"
+ },
+ {
+  "id": 8,
+  "name": "Умные часы Apple Watch Series 9",
+  "status": "В наличии",
+  "date_created": "2024-03-08",
+  "price": 41990,
+  "category": "Гаджеты"
+ },
+ {
+  "id": 9,
+  "name": "Беспроводная колонка JBL Charge 5",
+  "status": "На складе",
+  "date_created": "2024-01-30",
+  "price": 12990,
+  "category": "Аудио"
+ },
+ {
+  "id": 10,
+  "name": "Монитор LG UltraFine 27UP850",
+  "status": "В наличии",
+  "date_created": "2024-03-15",
+  "price": 58990,
+  "category": "Электроника"
+ }
+]
