@@ -2,25 +2,36 @@
 import {useRouter} from "vue-router";
 import {useAuthStore} from "../store/authStore";
 import authMiddleware from "../middleware/authMiddleware";
+import {ref, onMounted, computed} from "vue";
 
+// защита роута
 authMiddleware()
-
 
 const authStore = useAuthStore()
 const router = useRouter()
+
+// выход из профиля
 const logout = () => {
 		authStore.logout()
 		router.push('/')
 }
 
+// получение данных о текущем пользователе
+onMounted(() => {
+		authStore.getAuthUser()
+})
+
+// если пользователь авторизован, то вывести его полное имя
+const fullName = computed(() => authStore.user ? authStore.user.name + ' ' + authStore.user.surname : '')
+
+
 </script>
 
 <template>
 		<v-container>
-				<!-- Кнопка выхода -->
 				<v-row class="mb-4">
 						<v-col>
-								<h1>Привет, </h1>
+								<h1>Привет, {{ fullName }}</h1>
 						</v-col>
 						<v-col class="btn-wrap">
 								<v-btn
@@ -63,15 +74,8 @@ const logout = () => {
 				</v-card>
 
 				<!-- Таблица данных -->
-				<v-data-table
-
-				>
-						<!-- Кастомное отображение статуса -->
-						<template v-slot:item.status="{ item }">
-								<v-chip color="green">
-										{{ item.status }}
-								</v-chip>
-						</template>
+				<v-data-table>
+					<ProductsTable/>
 				</v-data-table>
 		</v-container>
 </template>

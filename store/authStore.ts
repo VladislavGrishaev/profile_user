@@ -7,6 +7,8 @@ interface Credentials {
 }
 
 interface User {
+  name: string;
+  surname: string;
   login: string;
   password: string;
   credentials: Credentials;

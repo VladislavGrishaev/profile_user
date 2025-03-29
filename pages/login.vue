@@ -11,7 +11,7 @@ const errorMessage = ref('')
 
 
 const sendForm = async () => {
-  errorMessage.value = '' // очистить сообщение об ошибке
+  errorMessage.value = ''
 
 		if (!login.value || !password.value) {
 				errorMessage.value = 'Пожалуйста, заполните все поля';
