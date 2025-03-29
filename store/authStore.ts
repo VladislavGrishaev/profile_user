@@ -19,11 +19,18 @@ interface User {
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null as User | null, /** текущий авторизованный пользователь **/
-    users: [] as User[]       /** список пользователей **/
+    isAuthReady: false        /** статус загрузки данных **/
   }),
 
   actions: {
+    /** Получение данных пользователя из localStorage **/
+    getAuthUser() {
+     const dataUser = localStorage.getItem('user')
+      this.user = dataUser ? JSON.parse(dataUser) : null
 
+      // помечаем, что данные загружены
+      this.isAuthReady = true
+    },
 
     /** Авторизация пользователя **/
     async login(username: string, password: string): Promise<boolean> {
@@ -38,8 +45,6 @@ export const useAuthStore = defineStore('auth', {
             u.credentials.username === username &&
             u.credentials.passphrase === password
         )
-        // проверяем, существует ли пользователь
-        foundUser ? this.user = foundUser : this.user = null
 
         // если пользователь найден, сохраняем его в store и localStorage
         if (foundUser) {
