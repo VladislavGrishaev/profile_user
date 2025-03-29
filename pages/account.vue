@@ -14,13 +14,13 @@ const router = useRouter()
 
 // выход из профиля
 const logout = () => {
-		authStore.logout()
-		router.push('/')
+  authStore.logout()
+  router.push('/')
 }
 
 // получение данных о текущем пользователе
 onMounted(() => {
-		authStore.getAuthUser()
+  authStore.getAuthUser()
 })
 
 // если пользователь авторизован, то вывести его полное имя
@@ -30,11 +30,28 @@ const fullName = computed(() => authStore.user ? authStore.user.name + ' ' + aut
 const productsStore = useProductsStore()
 productsStore.getProducts()
 
+// получаем текущие продукты для страницы
+const products = computed(() => productsStore.paginatedProducts())
+
+// общее количество страниц
+const totalPage = computed(() => productsStore.totalPages())
+
+// предыдущая и следующая страница
+const prevPage = () => {
+  if (productsStore.currentPage > 1) {
+    productsStore.changePage(productsStore.currentPage - 1)
+  }
+}
+const nextPage = () => {
+  if (productsStore.currentPage < totalPage.value) {
+    productsStore.changePage(productsStore.currentPage + 1)
+  }
+}
 
 </script>
 
 <template>
-		<v-container>
+		<v-container class="my-lg-5">
 				<v-row class="mb-4">
 						<v-col>
 								<h1>Привет, {{ fullName }}</h1>
@@ -81,18 +98,35 @@ productsStore.getProducts()
 
 				<!-- Таблица данных -->
 				<v-data-table hide-default-footer>
-					<ProductsTable
-									:products="productsStore.products"
-					/>
+						<ProductsTable
+										:products="products"
+						/>
 				</v-data-table>
+				<v-card-actions class="justify-center">
+						<v-btn
+										v-if="productsStore.currentPage > 1"
+										:disabled="productsStore.currentPage === 1"
+										@click="prevPage"
+										color="primary"
+						>Назад
+						</v-btn>
+						<span>{{ productsStore.currentPage }} из {{ totalPage }}</span>
+						<v-btn
+										v-if="productsStore.currentPage < totalPage"
+										:disabled="productsStore.currentPage === totalPage"
+										@click="nextPage"
+										color="primary"
+						>Вперед
+						</v-btn>
+				</v-card-actions>
 		</v-container>
 </template>
 
 <style scoped>
 .btn-wrap {
-				display: flex;
-				justify-content: flex-end;
-				align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .v-container {

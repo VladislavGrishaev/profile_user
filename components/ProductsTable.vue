@@ -28,6 +28,7 @@ const getColorStatus = (status: string) => {
 }
 
 
+
 </script>
 
 <template>
@@ -74,8 +75,8 @@ const getColorStatus = (status: string) => {
 <style scoped>
 th.title-column {
     font-size: 20px;
-				font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 
-</style
+</style>
