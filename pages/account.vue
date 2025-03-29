@@ -80,10 +80,9 @@ productsStore.getProducts()
 				</v-card>
 
 				<!-- Таблица данных -->
-				<v-data-table>
+				<v-data-table hide-default-footer>
 					<ProductsTable
 									:products="productsStore.products"
-
 					/>
 				</v-data-table>
 		</v-container>
