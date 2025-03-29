@@ -1,13 +1,26 @@
 <script setup lang="ts">
+import {useRouter} from "vue-router";
 
+const router = useRouter()
+
+const login = () => {
+		router.push('/login')
+}
 </script>
 
 
 <template>
-		<div>
-				<h1>Главная страница</h1>
-				<p>Добро пожаловать на сайт!</p>
-		</div>
+		<v-container>
+				<v-row class="mb-4">
+						<v-col class="btn-wrap">
+								<v-btn
+												@click="login"
+												color="primary">
+										Войти
+								</v-btn>
+						</v-col>
+				</v-row>
+		</v-container>
 </template>
 
 

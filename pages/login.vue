@@ -7,22 +7,38 @@ const router = useRouter()
 const authStore = useAuthStore()
 const login = ref('')
 const password = ref('')
+const errorMessage = ref('')
 
 
 const sendForm = async () => {
-	await authStore.login(login.value, password.value)
+  errorMessage.value = '' // очистить сообщение об ошибке
 
-  if (authStore) {
-    console.log("Авторизация успешна");
+		if (!login.value || !password.value) {
+				errorMessage.value = 'Пожалуйста, заполните все поля';
+				return
+		}
+
+		const isAuth = await authStore.login(login.value, password.value)
+
+
+  if (isAuth) {
+    console.log("Авторизация успешна", "Логин: " + login.value, "Пароль: " + password.value);
     await router.push('/account');
   }
   else {
-    console.log("Ошибка авторизации", "Логин: " + login.value, "Пароль: " + password.value);
+    errorMessage.value = "Неправильный логин или пароль";
+    console.log("Ошибка авторизации");
   }
 
 }
 
-
+const validateForm = async () => {
+  if (!login.value || !password.value) {
+				errorMessage.value = 'Пожалуйста, заполните все поля';
+		} else {
+				errorMessage.value = '';
+  }
+}
 
 watch(login,(newVal) => console.log(newVal))
 watch(password,(newVal) => console.log(newVal))
@@ -44,6 +60,7 @@ watch(password,(newVal) => console.log(newVal))
 						<v-form @submit.prevent="sendForm">
 								<v-text-field
 												v-model="login"
+												@input="validateForm"
 												label="Логин"
 												type="email"
 												name="email"
@@ -56,6 +73,7 @@ watch(password,(newVal) => console.log(newVal))
 
 								<v-text-field
 												v-model="password"
+												@input="validateForm"
 												label="Пароль"
 												type="password"
 												autocomplete="current-password"
@@ -64,8 +82,10 @@ watch(password,(newVal) => console.log(newVal))
 												class="mb-1"
 								></v-text-field>
 
-								<div class="text-error text-caption mb-3">
-										Введены неверные данные авторизации. Попробуйте ещё раз
+								<div
+												v-if="errorMessage"
+												class="text-error text-caption mb-3">
+										{{ errorMessage }}
 								</div>
 
 								<v-btn
