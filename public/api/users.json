@@ -4,7 +4,7 @@
         "surname": "Ivanov",
         "credentials":{
             "username": "test@mail.com",
-            "passphrase": "123"
+            "passphrase": "1"
         },
         "active": true,
         "created": "03.03.2025 10:00:21",

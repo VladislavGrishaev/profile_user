@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import {useRouter} from "vue-router";
+import {useAuthStore} from "../store/authStore";
+
+const authStore = useAuthStore()
+const router = useRouter()
+const logout = () => {
+		authStore.logout()
+		router.replace('/')
+}
+
+</script>
+
 <template>
 		<v-container>
 				<!-- Кнопка выхода -->
@@ -6,7 +19,9 @@
 								<h1>Привет, </h1>
 						</v-col>
 						<v-col class="btn-wrap">
-								<v-btn color="error">
+								<v-btn
+												@click="logout"
+												color="error">
 										Выход
 								</v-btn>
 						</v-col>

@@ -40,11 +40,6 @@ const validateForm = async () => {
   }
 }
 
-watch(login,(newVal) => console.log(newVal))
-watch(password,(newVal) => console.log(newVal))
-
-
-
 </script>
 
 <template>
