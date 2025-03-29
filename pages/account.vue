@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import {useRouter} from "vue-router";
-import {useAuthStore} from "../store/authStore";
-import authMiddleware from "../middleware/authMiddleware";
 import {ref, onMounted, computed} from "vue";
+import {useRouter} from "vue-router";
+import authMiddleware from "../middleware/authMiddleware";
+import {useAuthStore} from "../store/authStore";
+import {useProductsStore} from "../store/producsStore";
+
 
 // защита роута
 authMiddleware()
@@ -23,6 +25,10 @@ onMounted(() => {
 
 // если пользователь авторизован, то вывести его полное имя
 const fullName = computed(() => authStore.user ? authStore.user.name + ' ' + authStore.user.surname : '')
+
+// получение списка продуктов
+const productsStore = useProductsStore()
+productsStore.getProducts()
 
 
 </script>
@@ -75,7 +81,10 @@ const fullName = computed(() => authStore.user ? authStore.user.name + ' ' + aut
 
 				<!-- Таблица данных -->
 				<v-data-table>
-					<ProductsTable/>
+					<ProductsTable
+									:products="productsStore.products"
+
+					/>
 				</v-data-table>
 		</v-container>
 </template>

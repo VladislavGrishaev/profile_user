@@ -1,6 +1,18 @@
 <script setup lang="ts">
 
 
+
+defineProps<{
+  products: {
+    id: number;
+    name: string;
+    status: string;
+    date_created: string;
+    price: number;
+    category: string
+  }[]
+}>()
+
 </script>
 
 <template>
@@ -19,17 +31,19 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr >
-										<td>0</td>
-										<td>0</td>
+								<tr
+												v-for="product in products"
+								>
+										<td>{{ product.id }}</td>
+										<td>{{ product.name }}</td>
 										<td>
-												<v-chip  size="small">
-														status
+												<v-chip size="small">
+														{{ product.status }}
 												</v-chip>
 										</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
+										<td>{{ product.date_created }}</td>
+										<td>{{ product.price }}</td>
+										<td>{{ product.category }}</td>
 
 								</tr>
 								</tbody>
