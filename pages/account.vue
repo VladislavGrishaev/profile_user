@@ -3,7 +3,7 @@ import {ref, onMounted, computed} from "vue";
 import {useRouter} from "vue-router";
 import authMiddleware from "../middleware/authMiddleware";
 import {useAuthStore} from "../store/authStore";
-import {useProductsStore} from "../store/producsStore";
+import {useProductsStore} from "../store/productsStore";
 
 
 // защита роута
@@ -29,6 +29,7 @@ const fullName = computed(() => authStore.user ? authStore.user.name + ' ' + aut
 // получение списка продуктов
 const productsStore = useProductsStore()
 productsStore.getProducts()
+
 
 // получаем текущие продукты для страницы
 const products = computed(() => productsStore.paginatedProducts())
@@ -58,6 +59,7 @@ const nextPage = () => {
 						</v-col>
 						<v-col class="btn-wrap">
 								<v-btn
+												prepend-icon="mdi-logout"
 												@click="logout"
 												color="error">
 										Выход
@@ -66,35 +68,9 @@ const nextPage = () => {
 				</v-row>
 
 				<!-- Блок фильтров -->
-				<v-card class="mb-6 pa-4">
-						<v-row>
-								<!-- Фильтр по дате -->
-								<v-col cols="12" md="6">
-										<v-menu>
-												<template #activator="{ props }">
-														<v-text-field
-																		label="Фильтр по дате создания"
-																		readonly
-																		v-bind="props"
-																		value="2024-01-01 ~ 2024-12-31"
-														></v-text-field>
-												</template>
-												<v-date-picker range></v-date-picker>
-										</v-menu>
-								</v-col>
+			<FiltersTable
 
-								<!-- Мультиселект по статусу -->
-								<v-col cols="12" md="6">
-										<v-select
-														label="Фильтр по статусу"
-														multiple
-														chips
-														:items="['В наличии', 'Нет в наличии', 'На складе']"
-														model-value="['В наличии']"
-										></v-select>
-								</v-col>
-						</v-row>
-				</v-card>
+			/>
 
 				<!-- Таблица данных -->
 				<v-data-table hide-default-footer>
@@ -105,16 +81,16 @@ const nextPage = () => {
 				<v-card-actions class="justify-center">
 						<v-btn
 										v-if="productsStore.currentPage > 1"
-										:disabled="productsStore.currentPage === 1"
 										@click="prevPage"
+										:disabled="productsStore.currentPage === 1"
 										color="primary"
 						>Назад
 						</v-btn>
 						<span>{{ productsStore.currentPage }} из {{ totalPage }}</span>
 						<v-btn
 										v-if="productsStore.currentPage < totalPage"
-										:disabled="productsStore.currentPage === totalPage"
 										@click="nextPage"
+										:disabled="productsStore.currentPage === totalPage"
 										color="primary"
 						>Вперед
 						</v-btn>

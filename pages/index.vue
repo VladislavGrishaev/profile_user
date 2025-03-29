@@ -14,6 +14,7 @@ const login = () => {
 				<v-row class="mb-4">
 						<v-col class="btn-wrap">
 								<v-btn
+												prepend-icon="mdi-login"
 												@click="login"
 												color="primary">
 										Войти
