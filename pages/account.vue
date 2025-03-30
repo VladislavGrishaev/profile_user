@@ -4,7 +4,7 @@ import {useRouter} from "vue-router";
 import authMiddleware from "../middleware/authMiddleware";
 import {useAuthStore} from "../store/authStore";
 import {useProductsStore} from "../store/productsStore";
-
+/** -------------------------------------------- **/
 
 // защита роута
 authMiddleware()

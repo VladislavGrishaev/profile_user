@@ -2,9 +2,7 @@
 import {useProductsStore} from "../store/productsStore";
 import {format, parseISO} from "date-fns";
 
-
-
-
+/** -------------------------------------------- **/
 
 const productsStore = useProductsStore()
 
@@ -51,12 +49,19 @@ const getProductsWithFilters = async () => {
     };
 
     await productsStore.applyFilters(filtersToApply);
-  }
-  catch (error) {
+  } catch (error) {
     console.error("Ошибка в getProductsWithFilters:", error);
   }
 };
 
+// сброс фильтров
+const resetAllFilters = () => {
+  try {
+    productsStore.resetFilters();
+  } catch (e) {
+    console.log('Ошибка сброса фильтров: ', e);
+  }
+}
 
 
 </script>
@@ -79,7 +84,7 @@ const getProductsWithFilters = async () => {
 										<v-date-picker
 														v-model="filters.date"
 														color="primary"
-              @update:modelValue="updateDate"
+														@update:modelValue="updateDate"
 														first-day-of-week="1"
 										></v-date-picker>
 								</v-menu>
@@ -101,7 +106,17 @@ const getProductsWithFilters = async () => {
 												@click="getProductsWithFilters"
 												prepend-icon="mdi-filter"
 												color="primary"
-								>Применить</v-btn>
+												class="mr-5"
+								>
+										Применить
+								</v-btn>
+								<v-btn
+												@click="resetAllFilters"
+												prepend-icon="mdi-filter-remove"
+												color="blue-grey"
+								>
+										Сбросить
+								</v-btn>
 						</v-col>
 				</v-row>
 		</v-card>

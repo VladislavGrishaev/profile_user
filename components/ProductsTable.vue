@@ -1,7 +1,5 @@
 <script setup lang="ts">
 
-
-
 defineProps<{
   products: {
     id: number;
@@ -26,8 +24,6 @@ const getColorStatus = (status: string) => {
 						return 'gray'
 		}
 }
-
-
 
 </script>
 

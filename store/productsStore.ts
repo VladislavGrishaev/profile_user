@@ -1,6 +1,4 @@
 import {defineStore} from "pinia";
-import {parse, format} from "date-fns";
-import {ru} from "date-fns/locale";
 
 
 interface Product {
@@ -80,6 +78,15 @@ export const useProductsStore = defineStore('products', {
         return matchDate && matchStatus;
       });
 
+    },
+
+    /** сброс фильтров **/
+    resetFilters() {
+      this.filters = {
+        date: null,
+        status: []
+      }
+      this.filteredProducts = [...this.products]
     }
 
   }
