@@ -82,10 +82,8 @@ export const useProductsStore = defineStore('products', {
 
     /** сброс фильтров **/
     resetFilters() {
-      this.filters = {
-        date: null,
-        status: []
-      }
+      this.filters.date = null;
+      this.filters.status = [];
       this.filteredProducts = [...this.products]
     }
 

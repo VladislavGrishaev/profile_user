@@ -58,6 +58,8 @@ const getProductsWithFilters = async () => {
 const resetAllFilters = () => {
   try {
     productsStore.resetFilters();
+    filters.date = null;
+				filters.status = [];
   } catch (e) {
     console.log('Ошибка сброса фильтров: ', e);
   }
