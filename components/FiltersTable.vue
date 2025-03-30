@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import {useProductsStore} from "../store/productsStore";
-import {format} from "date-fns";
+import {format, parseISO} from "date-fns";
+
+
+
 
 
 const productsStore = useProductsStore()
@@ -14,36 +17,47 @@ const filters = reactive({
 const formatDate = computed(() => {
   if (!filters.date) return '';
 
-  if (Array.isArray(filters.date)) {
-    return filters.date
-      .map(d => format(new Date(d), 'dd.MM.yyyy'))
-      .join(' - ');
-  }
-
-  return format(new Date(filters.date), 'dd.MM.yyyy');
+  return Array.isArray(filters.date)
+    ? filters.date.map(d => format(new Date(d), 'dd.MM.yyyy')).join(' - ')
+    : format(new Date(filters.date), 'dd.MM.yyyy');
 });
 
+// обновление даты, если пользователь выбрал дату
 const updateDate = (date: any) => {
   filters.date = date
 }
 
+// фильтрация продуктов по дате
 const getProductsWithFilters = async () => {
   try {
-    // Преобразуем дату в нужный формат перед передачей
+    const parseDate = (dateStr: string | Date) => {
+
+      if (dateStr instanceof Date) {
+        return format(dateStr, "dd.MM.yyyy");
+      }
+
+      if (/\d{2}\.\d{2}\.\d{4}/.test(dateStr)) return dateStr;
+
+      return format(parseISO(dateStr), "dd.MM.yyyy");
+    };
+
     const filtersToApply = {
       status: filters.status,
       date: filters.date
         ? Array.isArray(filters.date)
-          ? filters.date.map(d => new Date(d).toISOString().split('T')[0])
-          : new Date(filters.date).toISOString().split('T')[0]
-        : null
+          ? filters.date.map(parseDate)
+          : parseDate(filters.date)
+        : null,
     };
 
     await productsStore.applyFilters(filtersToApply);
-  } catch (error) {
-    console.error('Ошибка в getProductsWithFilters:', error);
+  }
+  catch (error) {
+    console.error("Ошибка в getProductsWithFilters:", error);
   }
 };
+
+
 
 </script>
 
@@ -52,7 +66,7 @@ const getProductsWithFilters = async () => {
 				<v-row>
 						<!-- Фильтр по дате -->
 						<v-col cols="12" md="6">
-								<v-menu>
+								<v-menu :close-on-content-click="false">
 										<template #activator="{ props }">
 												<v-text-field
 																:model-value="filters.date ? formatDate : ''"
@@ -65,8 +79,8 @@ const getProductsWithFilters = async () => {
 										<v-date-picker
 														v-model="filters.date"
 														color="primary"
-														@update="updateDate"
-
+              @update:modelValue="updateDate"
+														first-day-of-week="1"
 										></v-date-picker>
 								</v-menu>
 						</v-col>
@@ -78,7 +92,7 @@ const getProductsWithFilters = async () => {
 												label="По статусу"
 												multiple
 												chips
-												:items="['В наличии', 'Нет в наличии', 'На складе']"
+												:items="['Все', 'В наличии', 'Нет в наличии', 'На складе']"
 												prepend-inner-icon="mdi-checkbox-marked-circle"
 								></v-select>
 						</v-col>

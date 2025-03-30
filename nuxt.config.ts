@@ -1,4 +1,5 @@
 // @ts-ignore
+// @ts-ignore
 export default defineNuxtConfig({
   css: [
     '@/assets/styles/main.scss',
@@ -20,7 +21,14 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./store/**'],
   },
+  vuetify: {
+    moduleOptions: {
+      locale: {
+        locale: 'ru',
 
+      }
+    }
+  },
   vite: {
     // vue: {
     //   // @ts-ignore

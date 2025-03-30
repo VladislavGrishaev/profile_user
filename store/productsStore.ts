@@ -1,5 +1,7 @@
 import {defineStore} from "pinia";
-import {warn} from "vue";
+import {parse, format} from "date-fns";
+import {ru} from "date-fns/locale";
+
 
 interface Product {
   id: number;
@@ -69,12 +71,10 @@ export const useProductsStore = defineStore('products', {
       const { date, status = [] } = filters;
 
       this.filteredProducts = this.products.filter((product) => {
-        // проверка по дате создания
-        const matchDate: boolean = date
-          ? new Date(product.date_created).toISOString().split("T")[0] === date
-          : true;
+        // Прямое сравнение строк формата "dd.MM.yyyy"
+        const matchDate = date ? product.date_created === date : true;
 
-        // проверка по статусу
+        // Проверка статуса
         const matchStatus = status.length ? status.includes(product.status) : true;
 
         return matchDate && matchStatus;

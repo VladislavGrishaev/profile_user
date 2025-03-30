@@ -3,7 +3,7 @@
   "id": 1,
   "name": "Ноутбук Lenovo IdeaPad",
   "status": "В наличии",
-  "date_created": "01-03-2024",
+  "date_created": "05.03.2025",
   "price": 54990,
   "category": "Электроника"
  },
@@ -11,7 +11,7 @@
   "id": 2,
   "name": "Смартфон Samsung Galaxy S23",
   "status": "В наличии",
-  "date_created": "05-03-2024",
+  "date_created": "12.03.2025",
   "price": 79990,
   "category": "Электроника"
  },
@@ -19,7 +19,7 @@
   "id": 3,
   "name": "Наушники Sony WH-1000XM5",
   "status": "Нет в наличии",
-  "date_created": "15-02-2024",
+  "date_created": "05.03.2025",
   "price": 29990,
   "category": "Аксессуары"
  },
@@ -27,7 +27,7 @@
   "id": 4,
   "name": "Фитнес-браслет Xiaomi Band 8",
   "status": "В наличии",
-  "date_created": "10-03-2024",
+  "date_created": "18.03.2025",
   "price": 4990,
   "category": "Гаджеты"
  },
@@ -35,7 +35,7 @@
   "id": 5,
   "name": "Кофемашина DeLonghi Magnifica",
   "status": "На складе",
-  "date_created": "22-01-2024",
+  "date_created": "12.03.2025",
   "price": 45990,
   "category": "Бытовая техника"
  },
@@ -43,7 +43,7 @@
   "id": 6,
   "name": "Игровая консоль PlayStation 5",
   "status": "В наличии",
-  "date_created": "12-03-2024",
+  "date_created": "25.03.2025",
   "price": 64990,
   "category": "Игры"
  },
@@ -51,7 +51,7 @@
   "id": 7,
   "name": "Электронная книга PocketBook 740",
   "status": "Нет в наличии",
-  "date_created": "28-02-2024",
+  "date_created": "25.03.2025",
   "price": 24990,
   "category": "Электроника"
  },
@@ -59,7 +59,7 @@
   "id": 8,
   "name": "Умные часы Apple Watch Series 9",
   "status": "В наличии",
-  "date_created": "08-03-2024",
+  "date_created": "18.03.2025",
   "price": 41990,
   "category": "Гаджеты"
  },
@@ -67,7 +67,7 @@
   "id": 9,
   "name": "Беспроводная колонка JBL Charge 5",
   "status": "На складе",
-  "date_created": "30-01-2024",
+  "date_created": "01.03.2025",
   "price": 12990,
   "category": "Аудио"
  },
@@ -75,7 +75,7 @@
   "id": 10,
   "name": "Монитор LG UltraFine 27UP850",
   "status": "В наличии",
-  "date_created": "15-03-2024",
+  "date_created": "12.03.2025",
   "price": 58990,
   "category": "Электроника"
  },
@@ -83,7 +83,7 @@
   "id": 11,
   "name": "Фотоаппарат Canon EOS R6",
   "status": "В наличии",
-  "date_created": "18-03-2024",
+  "date_created": "25.03.2025",
   "price": 149990,
   "category": "Фототехника"
  },
@@ -91,7 +91,7 @@
   "id": 12,
   "name": "Игровая мышь Razer Viper",
   "status": "Нет в наличии",
-  "date_created": "10-02-2024",
+  "date_created": "08.03.2025",
   "price": 8990,
   "category": "Комплектующие"
  },
@@ -99,7 +99,7 @@
   "id": 13,
   "name": "Электросамокат Xiaomi Pro 2",
   "status": "На складе",
-  "date_created": "25-01-2024",
+  "date_created": "18.03.2025",
   "price": 34990,
   "category": "Транспорт"
  },
@@ -107,7 +107,7 @@
   "id": 14,
   "name": "Умная колонка Яндекс Станция 2",
   "status": "В наличии",
-  "date_created": "20-03-2024",
+  "date_created": "01.03.2025",
   "price": 19990,
   "category": "Умный дом"
  },
@@ -115,7 +115,7 @@
   "id": 15,
   "name": "Внешний жесткий диск Seagate 2TB",
   "status": "В наличии",
-  "date_created": "22-03-2024",
+  "date_created": "08.03.2025",
   "price": 5990,
   "category": "Комплектующие"
  }
