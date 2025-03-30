@@ -99,7 +99,7 @@ const resetAllFilters = () => {
 												label="По статусу"
 												multiple
 												chips
-												:items="['Все', 'В наличии', 'Нет в наличии', 'На складе']"
+												:items="['В наличии', 'Нет в наличии', 'На складе']"
 												prepend-inner-icon="mdi-checkbox-marked-circle"
 								></v-select>
 						</v-col>
