@@ -52,12 +52,12 @@ const validateForm = async () => {
 						Авторизация
 				</v-card-title>
 
-				<v-card-text class="pb-0">
+				<v-card-text>
 						<v-form @submit.prevent="sendForm">
 								<v-text-field
 												v-model="login"
 												@input="validateForm"
-												label="Логин"
+												label="Логин (почта)"
 												type="email"
 												name="email"
 												required
@@ -95,12 +95,6 @@ const validateForm = async () => {
 								</v-btn>
 						</v-form>
 				</v-card-text>
-
-				<v-card-actions class="px-6 pb-6 pt-0 justify-center">
-      <span class="text-caption">
-        Нет аккаунта? <a href="#">Зарегистрироваться</a>
-      </span>
-				</v-card-actions>
 		</v-card>
 </template>
 
