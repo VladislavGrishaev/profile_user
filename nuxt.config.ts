@@ -23,20 +23,16 @@ export default defineNuxtConfig({
   },
   vuetify: {
     moduleOptions: {
+      styles: true,
+      autoImport: true,
+    },
+    vuetifyOptions: {
       locale: {
         locale: 'ru',
-
       }
     }
   },
   vite: {
-    // vue: {
-    //   // @ts-ignore
-    //   reactivityTransform: true
-    // },
-    // define: {
-    //   'process.env.DEBUG': false
-    // },
     css: {
       preprocessorOptions: {
         sass: {

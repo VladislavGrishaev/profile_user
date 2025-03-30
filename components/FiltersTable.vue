@@ -92,7 +92,7 @@ const resetAllFilters = () => {
 								</v-menu>
 						</v-col>
 
-						<!-- Мультиселект по статусу -->
+						<!-- Фильтр по статусу -->
 						<v-col cols="12" md="6">
 								<v-select
 												v-model="filters.status"
